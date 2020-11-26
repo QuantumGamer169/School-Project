@@ -1,42 +1,27 @@
-# Main Menu
-print("(------------Main Menu------------)")
-print("1. LPL: ")
-print("2. BOH")
-print("Please enter a number.")
-choice = int(input("Choose an option: "))
+choice = str(input("Please enter a 3 letter code: "))
 
 # Main menu While loop and error checker
-while choice != 1 and choice != 2:
-    choice = int(input("Error, enter 1 or 2: "))
+while choice != ("LPL") and choice != ("BOH"):
+    choice = str(input("Error, enter 1 or 2: "))
 
-OverSeas_Airport = ("JFK")
+OverSeas_Airport = input(str("Enter the overseas airport code:  "))
 
-if choice == 1:
-    print("(------------1------------)")
-    # opens the airports.txt
-    file = open("Airports.txt", "r")
-    for i in range(5):
-        line = file.readline()
-        data = line.split(",")
-        file.close()
-        # print (data[0])
-        # print (data[0:4])
-        # find the overseas info for the airport
-        if data[0] == OverSeas_Airport:
-            print(data[0:4])
-            #
 
-elif choice == 2:
-    print ("(------------2------------)")
-    # opens the airports.txt
-    file = open("Airports.txt", "r")
-    for i in range(5):
-        line = file.readline()
-        data = line.split(",")
-        # find the overseas info for the airport
-        file.close()
-        if data[0] == OverSeas_Airport:
-            print (data[0:4])
-            #
-else:
-    print ("(------------Invalid------------)")
+file = open("Airports.txt", "r")
+lines = file.readlines()
+#lines now refers to a list 
+#with each element of the list holding one record
+#Find the number of lines in the list
+numberOfRecs = len(lines)
+print("There are ",numberOfRecs," elements in the list")
+
+
+for n in range(numberOfRecs):
+  line = file.readline()
+  data = line.split(",")
+  print(data)
+  if data[0] == ("OverSeas_Airport"):
+    print (data[1])
+
+file.close()
+
